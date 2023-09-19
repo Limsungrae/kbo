@@ -1,0 +1,125 @@
+{% extends 'base.html'%}
+
+{% block content %}
+{% include 'navbar.html'%}
+<div class="team-buttons text-center mb-4">
+  {% for i in player_t %}
+  <a href="/{{ i.team }}">
+    <button class="btn btn-primary">{{ i.team }} 팀정보</button>
+  </a>
+  {% endfor %}
+</div>
+<div style="height: 50px;"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 mb-4">
+      <h1>타자 정보</h1>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th class="text-center">이름</th>
+              <th class="text-center">타율</th>
+              <th class="text-center">팀 소속</th>
+              <th class="text-center">안타</th>
+              <th class="text-center">홈런</th>
+              <th class="text-center">OPS</th>
+              <th class="text-center">경기출전</th>
+              <th class="text-center">승리기여도</th>
+              <th class="text-center">포지션</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in player_h %}
+            <tr>
+              <td>{{ i.name }}</td>
+              <td>{{ i.batting_average }}</td>
+              <td>{{ i.team }}</td>
+              <td>{{ i.hits }}</td>
+              <td>{{ i.home_runs }}</td>
+              <td>{{ i.on_base_plus_slugging }}</td>
+              <td>{{ i.games_played }}</td>
+              <td>{{ i.war }}</td>
+              <td>{{ i.position }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-lg-6 mb-4">
+      <h1>투수 정보</h1>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th style="width: 70px;" class="text-center">이름</th>
+              <th class="text-center">평균 자책점</th>
+              <th class="text-center">팀 소속</th>
+              <th class="text-center">승</th>
+              <th class="text-center">패</th>
+              <th class="text-center">세이브</th>
+              <th class="text-center">홀드</th>
+              <th class="text-center">경기출전</th>
+              <th class="text-center">이닝</th>
+              <th class="text-center">승리기여도</th>
+              <th class="text-center">포지션</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in player_p %}
+            <tr>
+              <td>{{ i.name }}</td>
+              <td>{{ i.era }}</td>
+              <td>{{ i.team }}</td>
+              <td>{{ i.wins }}</td>
+              <td>{{ i.losses }}</td>
+              <td>{{ i.saves }}</td>
+              <td>{{ i.holds }}</td>
+              <td>{{ i.games_played }}</td>
+              <td>{{ i.innings_pitched }}</td>
+              <td>{{ i.war }}</td>
+              <td>{{ i.position }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .table {
+    width: 100%;
+  }
+
+  .team-buttons {
+    margin-top: 20px;
+  }
+
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid #dee2e6;
+  }
+
+  .table-bordered th {
+    background-color: #f8f9fa;
+    color: #343a40;
+  }
+
+  .table-bordered tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+  }
+
+  th{
+    
+  }
+
+</style>
+
+{% endblock %}
